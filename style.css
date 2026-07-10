@@ -35,25 +35,37 @@ body {
 ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 10px; }
 
 /* ===== CUSTOM CURSOR ===== */
-.cursor {
-  width: 10px; height: 10px;
+#cursor {
+  width: 8px; height: 8px;
   background: var(--orange);
   border-radius: 50%;
   position: fixed; top: 0; left: 0;
   pointer-events: none; z-index: 9999;
-  transition: transform 0.1s ease;
   transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.15);
+  transition: transform 0.14s ease, width 0.2s ease, height 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
 }
-.cursor-follower {
-  width: 36px; height: 36px;
-  border: 1.5px solid var(--orange);
+#cursorFollower {
+  width: 34px; height: 34px;
+  border: 1px solid rgba(255, 107, 0, 0.65);
+  background: rgba(255, 107, 0, 0.06);
   border-radius: 50%;
   position: fixed; top: 0; left: 0;
   pointer-events: none; z-index: 9998;
-  transition: transform 0.18s ease, width 0.3s, height 0.3s, border-color 0.3s;
   transform: translate(-50%, -50%);
+  transition: transform 0.16s ease, width 0.22s ease, height 0.22s ease, border-color 0.22s ease, background 0.22s ease, opacity 0.22s ease;
 }
-.cursor-follower.hover { width: 56px; height: 56px; border-color: var(--orange-light); }
+#cursorFollower.hover {
+  width: 48px; height: 48px;
+  border-color: rgba(255, 140, 56, 0.95);
+  background: rgba(255, 140, 56, 0.11);
+  transform: translate(-50%, -50%) scale(1.02);
+}
+#cursorFollower.clicking {
+  width: 30px; height: 30px;
+  background: rgba(255, 107, 0, 0.12);
+  transform: translate(-50%, -50%) scale(0.94);
+}
 
 /* ===== NAVBAR ===== */
 .navbar {
@@ -344,7 +356,7 @@ body {
   color: var(--grey-light); margin-bottom: 22px; min-height: 32px;
 }
 .typed-text { color: var(--orange-light); }
-.cursor {
+.typewriter-cursor {
   display: inline-block; width: 2px; height: 1em;
   background: var(--orange); vertical-align: middle;
   animation: blink 0.8s infinite;

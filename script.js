@@ -4,16 +4,30 @@ const follower = document.getElementById('cursorFollower');
 let mouseX = 0, mouseY = 0;
 let followerX = 0, followerY = 0;
 
-document.addEventListener('mousemove', e => {
+function updateCursorPosition(e) {
   mouseX = e.clientX;
   mouseY = e.clientY;
   cursor.style.left = mouseX + 'px';
   cursor.style.top = mouseY + 'px';
+}
+
+document.addEventListener('mousemove', updateCursorPosition);
+document.addEventListener('mousedown', () => follower.classList.add('clicking'));
+document.addEventListener('mouseup', () => follower.classList.remove('clicking'));
+
+document.addEventListener('mouseleave', () => {
+  follower.style.opacity = '0';
+  cursor.style.opacity = '0';
+});
+
+document.addEventListener('mouseenter', () => {
+  follower.style.opacity = '1';
+  cursor.style.opacity = '1';
 });
 
 function animateFollower() {
-  followerX += (mouseX - followerX) * 0.12;
-  followerY += (mouseY - followerY) * 0.12;
+  followerX += (mouseX - followerX) * 0.16;
+  followerY += (mouseY - followerY) * 0.16;
   follower.style.left = followerX + 'px';
   follower.style.top = followerY + 'px';
   requestAnimationFrame(animateFollower);
